@@ -7,8 +7,8 @@ export const SALE_DATA = {
 
   battery: {
     health: 97,
-    cycles: 106,
-    hours: null, // TODO: obtener desde System Settings > Screen Time > App Usage
+    cycles: 110,
+    hours: 1016,
   },
 
   specs: {
@@ -88,9 +88,9 @@ export const SALE_DATA = {
   ],
 
   performance: {
-    m3pro:     { label: 'M3 Pro',               multiplier: 1.4, barPct: 100 },
-    m1pro:     { label: 'M1 Pro',               multiplier: 1.0, barPct: 72  },
-    windowsI7: { label: 'Windows Core i7 16GB', multiplier: 0.7, barPct: 50  },
+    m3pro: { label: 'M3 Pro', multiplier: 1.4, barPct: 100 },
+    m1pro: { label: 'M1 Pro', multiplier: 1.0, barPct: 72 },
+    windowsI7: { label: 'Windows Core i7 16GB', multiplier: 0.7, barPct: 50 },
     cpuGain: '+20%',
     gpuGain: '+40%',
     vsWindowsGain: '+2x',

@@ -94,7 +94,7 @@ export default function BentoSpecs() {
             </div>
             <div className="relative z-10 grow flex items-center justify-center my-6">
               <div className="w-32 h-32 md:w-44 md:h-44 bg-void border border-border-dim rounded-lg flex items-center justify-center relative shadow-2xl">
-                <span className="font-display font-bold text-center text-4xl text-white">
+                <span className="font-display font-bold text-center text-2xl md:text-4xl text-white">
                   M3 Pro Chip
                 </span>
                 <div className="absolute -left-10 top-1/2 w-10 h-px bg-border-dim group-hover:bg-cyber/50 transition-colors" />
@@ -218,34 +218,96 @@ export default function BentoSpecs() {
             </div>
           </motion.div>
 
-          {/* Card 5: Battery */}
+          {/* Card 5: Power Cell & Display (2x1) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="col-span-1 bg-surface border border-border-dim rounded-xl p-6 flex flex-col items-center justify-center relative group transition-all hover:-translate-y-0.5"
+            className="col-span-1 md:col-span-2 bg-surface border border-border-dim rounded-xl p-6 flex flex-col relative group transition-all hover:-translate-y-0.5"
           >
-            <div className="absolute top-6 left-6 font-mono text-text-muted text-xs uppercase tracking-widest">
-              Power Cell
+            <div className="font-mono text-text-muted text-xs uppercase tracking-widest mb-4">
+              Power Cell &amp; Display
             </div>
-            <CircleProgress value={SALE_DATA.battery.health} />
-            <div className="mt-4 text-center">
-              <p className="font-mono text-xs text-text-muted">
-                Ciclos:{' '}
-                <span className="text-white">{SALE_DATA.battery.cycles}</span>
-              </p>
-              <p className="font-mono text-[10px] text-cyber mt-1 uppercase tracking-wider">
-                Hasta 22 horas
-              </p>
+            <div className="flex flex-col sm:flex-row gap-6 grow">
+              {/* Left: Battery */}
+              <div className="flex-1 flex flex-col items-center justify-center">
+                <CircleProgress value={SALE_DATA.battery.health} />
+                <div className="mt-3 text-center space-y-1">
+                  <p className="font-mono text-xs text-text-muted">
+                    Ciclos:{' '}
+                    <span className="text-white">
+                      {SALE_DATA.battery.cycles}
+                    </span>
+                    <span className="mx-2 text-border-dim">·</span>
+                    Salud:{' '}
+                    <span className="text-white">
+                      {SALE_DATA.battery.health}%
+                    </span>
+                  </p>
+                  <div className="inline-flex items-center gap-1.5 bg-cyber/10 border border-cyber/30 rounded px-2 py-0.5">
+                    <span className="w-1.5 h-1.5 bg-cyber rounded-full" />
+                    <span className="font-mono text-[10px] text-cyber uppercase tracking-wider font-bold">
+                      EXCELENTE
+                    </span>
+                  </div>
+                  <p className="font-mono text-[10px] text-text-muted">
+                    {'< 200 ciclos · top 10% vida útil'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden sm:block w-px bg-border-dim self-stretch" />
+              <div className="sm:hidden h-px w-full bg-border-dim" />
+
+              {/* Right: Screen usage */}
+              <div className="flex-1 flex flex-col justify-center gap-3">
+                <div>
+                  <p className="font-mono text-text-muted text-[10px] uppercase tracking-widest mb-1">
+                    Uso de pantalla
+                  </p>
+                  <div className="text-4xl font-display font-bold text-white leading-none">
+                    1.016
+                    <span className="text-lg text-text-muted ml-1.5">h</span>
+                  </div>
+                  <p className="font-mono text-[10px] text-text-muted mt-1">
+                    ~9.6 h / ciclo
+                  </p>
+                </div>
+                {/* Range bar */}
+                <div>
+                  <div className="relative h-3 w-full flex rounded-full overflow-hidden gap-px mb-1.5">
+                    <div className="flex-[2] bg-cyber/70" />
+                    <div className="flex-[2] bg-zinc-600/50" />
+                    <div className="flex-[2] bg-amber-600/30" />
+                    <div className="flex-[2] bg-red-800/30" />
+                    <div
+                      className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_6px_white]"
+                      style={{
+                        left: `${Math.min((SALE_DATA.battery.hours / 4000) * 100, 100)}%`,
+                      }}
+                    />
+                  </div>
+                  <div className="flex justify-between font-mono text-[9px] text-text-muted">
+                    <span className="text-cyber">EXCELENTE</span>
+                    <span>BUENO</span>
+                    <span>REGULAR</span>
+                    <span>MALO</span>
+                  </div>
+                </div>
+                <p className="font-mono text-[10px] text-text-muted">
+                  Mini-LED · 10.000–30.000 h vida útil estimada
+                </p>
+              </div>
             </div>
           </motion.div>
 
-          {/* Card 6: Ports (2x1) */}
+          {/* Card 6: Ports (1x1) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="col-span-1 md:col-span-2 bg-surface border border-border-dim rounded-xl p-6 flex flex-col justify-between relative group transition-all hover:-translate-y-0.5"
+            className="col-span-1 bg-surface border border-border-dim rounded-xl p-6 flex flex-col justify-between relative group transition-all hover:-translate-y-0.5"
           >
             <div className="flex justify-between items-start mb-4">
               <h3 className="font-mono text-text-muted text-xs uppercase tracking-widest">

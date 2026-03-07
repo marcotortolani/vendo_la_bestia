@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'MacBook Pro M3 Pro 16" Space Black — Venta Maldonado/Montevideo',
   description:
-    'MacBook Pro M3 Pro 16" Space Black en perfectas condiciones. 18GB RAM, 512GB SSD, 97% batería, 106 ciclos. Precio: US$ 3.500. Montevideo, Uruguay.',
+    'MacBook Pro M3 Pro 16" Space Black en perfectas condiciones. 18GB RAM, 512GB SSD, 97% batería, 110 ciclos. Precio: US$ 3.500. Montevideo, Uruguay.',
   keywords: [
     'MacBook Pro',
     'M3 Pro',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'MacBook Pro M3 Pro 16" - US$ 3.500',
     description:
-      'Condición pristina. 97% batería, 106 ciclos. Piriápolis, Maldonado o Montevideo Centro.',
+      'Condición pristina. 97% batería, 110 ciclos. Piriápolis, Maldonado o Montevideo Centro.',
     type: 'website',
     locale: 'es_UY',
   },

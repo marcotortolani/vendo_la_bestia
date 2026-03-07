@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'motion/react'
+import Image from 'next/image'
 
 const SLIDES = [
   {
@@ -11,6 +12,7 @@ const SLIDES = [
     counter: '01 / 04',
     bg: 'from-zinc-900 to-black',
     description: 'Vista superior — sin rayones ni marcas',
+    image: '/images/Apple-MacBook-Pro-top-view.webp',
   },
   {
     id: 'screen_02',
@@ -19,6 +21,7 @@ const SLIDES = [
     counter: '02 / 04',
     bg: 'from-zinc-800 to-black',
     description: 'Display prístino, sin presión ni rayados',
+    image: null,
   },
   {
     id: 'keyboard_03',
@@ -27,15 +30,17 @@ const SLIDES = [
     counter: '03 / 04',
     bg: 'from-neutral-900 to-black',
     description: 'Teclas sin desgaste, retroiluminación perfecta',
+    image: null,
   },
   {
     id: 'system_04',
     label: '[SYSTEM_04]',
-    title: `CYCLE COUNT: 106 // VERIFIED`,
+    title: `CYCLE COUNT: 110 // VERIFIED`,
     counter: '04 / 04',
     bg: 'from-black to-zinc-900',
     isCode: true,
     description: 'Datos verificados del sistema',
+    image: null,
   },
 ]
 
@@ -44,6 +49,7 @@ export default function VisualEvidence() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [revealedId, setRevealedId] = useState<string | null>(null)
 
   function scrollTo(index: number) {
     const el = scrollRef.current
@@ -122,87 +128,119 @@ export default function VisualEvidence() {
             className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-8 pb-12 w-full"
             style={{ scrollSnapType: 'x mandatory' }}
           >
-            {SLIDES.map((slide, i) => (
-              <div
-                key={slide.id}
-                className="slide-item snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] flex flex-col gap-3 group/card"
-                style={{ scrollSnapAlign: 'center' }}
-              >
-                <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border-dim bg-surface">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-
-                  {slide.isCode ? (
-                    <div className="h-full w-full bg-[#1e1e1e] p-6 font-mono text-xs text-green-400 overflow-hidden relative">
-                      <p>&gt; system_profiler SPHardwareDataType</p>
-                      <p className="text-white mt-2">Hardware Overview:</p>
-                      <p className="text-white ml-4">
-                        {' '}
-                        Model Name: MacBook Pro
-                      </p>
-                      <p className="text-white ml-4"> Chip: Apple M3 Pro</p>
-                      <p className="text-white ml-4"> Memory: 18 GB</p>
-                      <p className="text-white ml-4">
-                        {' '}
-                        Serial Number: **********
-                      </p>
-                      <br />
-                      <p>&gt; ioreg -l | grep CycleCount</p>
-                      <p className="text-white ml-4">
-                        {' '}
-                        &quot;CycleCount&quot; = 106
-                      </p>
-                      <p className="text-white ml-4">
-                        {' '}
-                        &quot;BatteryHealth&quot; = 97
-                      </p>
-                      <p className="text-white ml-4">
-                        {' '}
-                        &quot;Condition&quot; = &quot;Normal&quot;
-                      </p>
-                      <br />
-                      <p className="text-cyber">&gt; _ </p>
-                    </div>
-                  ) : (
+            {SLIDES.map((slide, i) => {
+              const isRevealed = revealedId === slide.id
+              return (
+                <div
+                  key={slide.id}
+                  className="slide-item snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] flex flex-col gap-3 group/card"
+                  style={{ scrollSnapAlign: 'center' }}
+                  onClick={() =>
+                    slide.image && setRevealedId(isRevealed ? null : slide.id)
+                  }
+                >
+                  <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border-dim bg-surface">
                     <div
-                      className={`h-full w-full bg-gradient-to-br ${slide.bg} flex items-center justify-center transition-transform duration-700 ease-out group-hover/card:scale-105`}
-                    >
-                      <div className="text-center space-y-3">
-                        <div className="font-mono text-[10px] text-cyber tracking-widest">
-                          {slide.label}
-                        </div>
-                        <div className="w-24 lg:w-36 h-24 border border-border-dim rounded-lg bg-surface-highlight mx-auto flex items-center justify-center">
-                          <span className="font-mono text-xs text-text-muted text-center px-2">
-                            {slide.description}
-                          </span>
-                        </div>
-                        <div className="font-mono text-[10px] text-cyber/60 tracking-widest uppercase">
-                          [FOTO_REAL_AQUI]
+                      className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 transition-opacity duration-300${slide.image ? ' group-hover/card:opacity-0' : ''}${isRevealed ? ' opacity-0' : ''}`}
+                    />
+
+                    {slide.image && (
+                      <Image
+                        src={slide.image}
+                        alt={slide.description}
+                        fill
+                        className="object-cover z-[1] transition-transform duration-700 ease-out group-hover/card:scale-105"
+                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 60vw, 45vw"
+                      />
+                    )}
+
+                    {slide.isCode ? (
+                      <div className="h-full w-full bg-[#1e1e1e] p-6 font-mono text-[8px] md:text-xs text-green-400 overflow-hidden relative">
+                        <p>&gt; system_profiler SPHardwareDataType</p>
+                        <p className="text-white mt-2">Hardware Overview:</p>
+                        <p className="text-white ml-4">
+                          {' '}
+                          Model Name: MacBook Pro
+                        </p>
+                        <p className="text-white ml-4"> Chip: Apple M3 Pro</p>
+                        <p className="text-white ml-4"> Memory: 18 GB</p>
+                        <p className="text-white ml-4">
+                          {' '}
+                          Serial Number: **********
+                        </p>
+                        <br />
+                        <p>&gt; ioreg -l | grep CycleCount</p>
+                        <p className="text-white ml-4">
+                          {' '}
+                          &quot;CycleCount&quot; = 110
+                        </p>
+                        <p className="text-white ml-4">
+                          {' '}
+                          &quot;BatteryHealth&quot; = 97
+                        </p>
+                        <p className="text-white ml-4">
+                          {' '}
+                          &quot;Condition&quot; = &quot;Normal&quot;
+                        </p>
+                        <br />
+                        <p>&gt; ac -p | grep -i total</p>
+                        <p className="text-white ml-4">
+                          {' '}
+                          total&nbsp;&nbsp;&nbsp;&nbsp;1016.00 hrs
+                        </p>
+                        <br />
+                        <p className="text-cyber">&gt; _ </p>
+                      </div>
+                    ) : (
+                      <div
+                        className={`h-full w-full bg-linear-to-br ${slide.bg} flex items-center justify-center transition-opacity ease-in-out duration-300${slide.image ? ' group-hover/card:opacity-0' : ''}${isRevealed ? ' opacity-0' : ''}`}
+                      >
+                        <div className="relative z-10 text-center space-y-3">
+                          <div className="font-mono text-[10px] text-cyber tracking-widest">
+                            {slide.label}
+                          </div>
+                          <div className="w-36 h-24 border border-border-dim rounded-lg bg-surface-highlight mx-auto flex items-center justify-center">
+                            <span className="font-mono text-xs text-text-muted text-center px-2">
+                              {slide.description}
+                            </span>
+                          </div>
+                          {!slide.image && (
+                            <div className="font-mono text-[10px] text-cyber/60 tracking-widest uppercase">
+                              [FOTO_REAL_AQUI]
+                            </div>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
 
-                  {/* Data overlay */}
-                  <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 z-20 flex justify-between items-end">
-                    <div className="flex flex-col gap-1">
-                      <span className="font-mono text-cyber text-xs tracking-widest">
-                        {slide.label}
-                      </span>
-                      <span className="font-mono text-white text-sm md:text-base font-bold">
-                        {slide.title}
+                    {/* Data overlay */}
+                    <div
+                      className={`absolute bottom-0 left-0 w-full p-4 md:p-6 z-20 flex justify-between items-end transition-opacity duration-300${slide.image ? ' group-hover/card:opacity-0' : ''}${isRevealed ? ' opacity-0' : ''}`}
+                    >
+                      <div className="flex flex-col gap-1">
+                        <span className="font-mono text-cyber text-xs tracking-widest">
+                          {slide.label}
+                        </span>
+                        <span className="font-mono text-white text-sm md:text-base font-bold">
+                          {slide.title}
+                        </span>
+                      </div>
+                      <span className="font-mono text-text-muted text-nowrap text-[10px] md:text-xs border border-border-dim px-2 py-1 bg-black/50 backdrop-blur-sm">
+                        {slide.counter}
                       </span>
                     </div>
-                    <span className="font-mono text-text-muted text-xs border border-border-dim px-2 py-1 bg-black/50 backdrop-blur-sm">
-                      {slide.counter}
-                    </span>
+
+                    {/* Corner reticles */}
+                    <div
+                      className={`absolute top-4 right-4 h-8 w-8 border-t border-r border-cyber/30 z-20 transition-opacity duration-300${slide.image ? ' group-hover/card:opacity-0' : ''}${isRevealed ? ' opacity-0' : ''}`}
+                    />
+                    <div
+                      className={`absolute bottom-4 left-4 h-8 w-8 border-b border-l border-cyber/30 z-20 transition-opacity duration-300${slide.image ? ' group-hover/card:opacity-0' : ''}${isRevealed ? ' opacity-0' : ''}`}
+                    />
                   </div>
-
-                  {/* Corner reticles */}
-                  <div className="absolute top-4 right-4 h-8 w-8 border-t border-r border-cyber/30 z-20" />
-                  <div className="absolute bottom-4 left-4 h-8 w-8 border-b border-l border-cyber/30 z-20" />
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
           {/* Progress bar */}
@@ -243,7 +281,7 @@ export default function VisualEvidence() {
                 </span>
               </button>
             </div>
-            <div className="hidden md:flex items-center gap-2 text-text-muted/40 font-mono text-[10px] uppercase tracking-widest">
+            <div className="hidden md:flex items-center gap-2 text-text-muted/70 font-mono text-[10px] uppercase tracking-widest">
               <span>Scroll or swipe to inspect</span>
             </div>
           </div>

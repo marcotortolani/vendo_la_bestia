@@ -28,8 +28,8 @@ export default function Performance() {
             M3 PRO vs THE REST
           </h2>
           <p className="text-text-muted text-lg max-w-2xl leading-relaxed">
-            Un salto generacional en silicio. Aplasta al M1 Pro y deja atrás
-            a cualquier notebook Windows Core i7 del mismo rango de precios.
+            Un salto generacional en silicio. Aplasta al M1 Pro y deja atrás a
+            cualquier notebook Windows Core i7 del mismo rango de categoría.
           </p>
         </motion.div>
 
@@ -114,8 +114,12 @@ export default function Performance() {
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <div className="flex items-center gap-3">
-                    <span className="text-text-muted font-bold">Windows Core i7</span>
-                    <span className="text-text-muted text-[10px] font-mono">16GB RAM</span>
+                    <span className="text-text-muted font-bold">
+                      Windows Core i7
+                    </span>
+                    <span className="text-text-muted text-[10px] font-mono">
+                      16GB RAM
+                    </span>
                   </div>
                   <span className="font-mono text-text-muted text-lg">
                     {SALE_DATA.performance.windowsI7.multiplier}x

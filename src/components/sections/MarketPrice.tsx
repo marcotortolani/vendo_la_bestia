@@ -125,7 +125,7 @@ export default function MarketPrice() {
             </div>
             <div className="h-px bg-cyber/20 w-full" />
             <ul className="flex flex-col gap-4 text-sm text-white">
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-2">
                 <span className="text-cyber">★</span>
                 <span>{SALE_DATA.battery.health}% Salud de Batería</span>
               </li>

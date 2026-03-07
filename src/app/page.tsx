@@ -10,7 +10,7 @@ import WhatsAppFAB from '@/components/WhatsAppFAB'
 
 export default function Home() {
   return (
-    <main className="bg-void min-h-screen">
+    <main className="bg-void min-h-screen max-w-screen-2xl mx-auto">
       <Navigation />
       <Hero />
       <BentoSpecs />
