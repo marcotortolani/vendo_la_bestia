@@ -92,6 +92,9 @@ export default function VisualEvidence() {
             <p className="text-text-muted font-mono text-xs md:text-sm tracking-widest pl-1">
               UNRETOUCHED IMAGERY. VERIFY PHYSICAL INTEGRITY.
             </p>
+            <p className="text-cyber font-display text-lg md:text-2xl font-bold pl-1 mt-1">
+              Una bestia cuidada como ninguna.
+            </p>
           </div>
           <div className="mt-6 md:mt-0 flex items-center gap-3 bg-surface border border-border-dim px-4 py-2 rounded-full">
             <div className="relative flex h-3 w-3">

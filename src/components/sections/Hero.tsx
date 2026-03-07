@@ -166,9 +166,11 @@ export default function Hero() {
 
       {/* Bottom fade + scroll indicator */}
       <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-20" />
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-text-muted/60">
-        <span>CONOCELA</span>
-        <span className="text-sm animate-[bounce-slow_2s_ease-in-out_infinite]">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em]">
+        <span className="text-cyber text-center animate-[bounce-slow_2s_ease-in-out_infinite]">
+          LA BESTIA ESTÁ LISTA PARA SER TUYA
+        </span>
+        <span className="text-sm text-cyber animate-[bounce-slow_2s_ease-in-out_infinite]">
           ↓
         </span>
       </div>

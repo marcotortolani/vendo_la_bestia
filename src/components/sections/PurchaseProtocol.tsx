@@ -119,7 +119,11 @@ export default function PurchaseProtocol() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col gap-4"
         >
+          <p className="text-center font-display text-2xl md:text-3xl font-bold text-white">
+            ¿Querés la bestia?
+          </p>
           <a
             href={SALE_DATA.contact.waLink}
             target="_blank"

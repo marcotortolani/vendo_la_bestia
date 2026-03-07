@@ -318,9 +318,20 @@ export default function BentoSpecs() {
         {/* Status bar */}
         <div className="mt-6 flex justify-between items-center border-t border-border-dim pt-4 font-mono text-[10px] text-text-muted">
           <div>ID: M3-PRO-UY-001</div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-cyber rounded-full animate-pulse" />
-            <span>SYSTEM ONLINE</span>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://support.apple.com/en-us/117737"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-cyber hover:underline underline-offset-2 transition-opacity hover:opacity-80"
+            >
+              <span>↗</span>
+              <span>FULL SPECS — APPLE.COM</span>
+            </a>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-cyber rounded-full animate-pulse" />
+              <span>SYSTEM ONLINE</span>
+            </div>
           </div>
         </div>
       </div>
