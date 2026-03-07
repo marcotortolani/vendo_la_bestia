@@ -37,7 +37,7 @@ export default function Navigation() {
       <div className="flex items-center gap-3">
         <span className="text-cyber text-xl font-mono">$</span>
         <h2 className="font-mono text-sm font-bold tracking-widest text-text-muted">
-          VOID_ENGINEERING
+          VENDO_LA_BESTIA
         </h2>
       </div>
 
