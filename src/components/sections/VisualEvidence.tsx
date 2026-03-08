@@ -149,14 +149,16 @@ export default function VisualEvidence() {
                         src={slide.image}
                         alt={slide.description}
                         fill
-                        className="object-cover z-[1] transition-transform duration-700 ease-out group-hover/card:scale-105"
+                        className="object-cover z-1 transition-transform duration-700 ease-out group-hover/card:scale-105"
                         sizes="(max-width: 768px) 85vw, (max-width: 1024px) 60vw, 45vw"
                       />
                     )}
 
                     {slide.isCode ? (
-                      <div className="h-full w-full bg-[#1e1e1e] p-6 font-mono text-[8px] md:text-xs text-green-400 overflow-hidden relative">
-                        <p>&gt; system_profiler SPHardwareDataType</p>
+                      <div className="h-full w-full bg-[#1e1e1e] px-3 py-1 md:p-6 font-mono text-[8px] md:text-xs text-green-400 overflow-hidden relative">
+                        <p className="hidden md:flex">
+                          &gt; system_profiler SPHardwareDataType
+                        </p>
                         <p className="text-white mt-2">Hardware Overview:</p>
                         <p className="text-white ml-4">
                           {' '}
@@ -169,7 +171,9 @@ export default function VisualEvidence() {
                           Serial Number: **********
                         </p>
                         <br />
-                        <p>&gt; ioreg -l | grep CycleCount</p>
+                        <p className="hidden md:flex">
+                          &gt; ioreg -l | grep CycleCount
+                        </p>
                         <p className="text-white ml-4">
                           {' '}
                           &quot;CycleCount&quot; = 110
@@ -183,7 +187,9 @@ export default function VisualEvidence() {
                           &quot;Condition&quot; = &quot;Normal&quot;
                         </p>
                         <br />
-                        <p>&gt; ac -p | grep -i total</p>
+                        <p className="hidden md:flex">
+                          &gt; ac -p | grep -i total
+                        </p>
                         <p className="text-white ml-4">
                           {' '}
                           total&nbsp;&nbsp;&nbsp;&nbsp;1016.00 hrs

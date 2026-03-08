@@ -123,11 +123,16 @@
 /* Glow effect */
 .glow-bloom {
   transition: all 0.5s ease-out;
-  filter: drop-shadow(0 0 0px rgba(13, 242, 147, 0));
-}
-.group:hover .glow-bloom {
-  transform: scale(1.02);
   filter: drop-shadow(0 0 30px rgba(13, 242, 147, 0.15));
+}
+@media (min-width: 1024px) {
+  .glow-bloom {
+    filter: drop-shadow(0 0 0px rgba(13, 242, 147, 0));
+  }
+  .group:hover .glow-bloom {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 30px rgba(13, 242, 147, 0.15));
+  }
 }
 
 /* Background grid */

@@ -11,10 +11,10 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col w-full bg-void overflow-hidden"
     >
       {/* Background Grid */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-grid" />
+      <div className="absolute inset-0 z-0 opacity-80 pointer-events-none bg-grid" />
 
       {/* Main Content */}
-      <main className="relative z-10 flex-grow flex flex-col lg:flex-row items-center justify-center max-w-[1440px] mx-auto w-full px-6 py-24 lg:px-12 gap-12 lg:gap-24 mt-16">
+      <main className="relative z-10 grow flex flex-col lg:flex-row items-center justify-center max-w-360 mx-auto w-full px-6 py-24 lg:px-12 gap-12 lg:gap-24 mt-16">
         {/* Left Column */}
         <div className="flex-1 flex flex-col items-start w-full max-w-2xl space-y-8">
           {/* Location Status Pill */}
@@ -38,12 +38,14 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="space-y-2"
           >
-            <h1 className="text-6xl sm:text-7xl lg:text-[7rem] font-bold leading-[0.85] tracking-tighter text-white uppercase font-display">
+            <h1 className="text-6xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.85] tracking-tighter text-white uppercase font-display">
+              <span className="text-neutral-800 text-nowrap">MACBOOK PRO</span>
+              <br />
               M3 PRO
               <br />
-              <span className="text-text-muted/40">18GB RAM</span>
+              <span className="text-neutral-800">18GB RAM</span>
               <br />
-              <span className="text-text-muted/40">512GB SSD</span>
+              <span className="text-neutral-800">512GB SSD</span>
             </h1>
           </motion.div>
 
@@ -118,14 +120,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex-1 w-full flex items-center justify-center lg:justify-end group"
         >
-          <div className="relative w-full max-w-2xl aspect-[4/3] flex items-center justify-center">
+          <div className="relative w-full max-w-2xl aspect-4/3 flex items-center justify-center">
             {/* Glow behind */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-surface to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-3xl scale-75 group-hover:scale-100" />
+            <div className="absolute inset-0 bg-linear-to-tr from-surface to-transparent rounded-full opacity-100 scale-100 lg:opacity-0 lg:scale-75 lg:group-hover:opacity-100 lg:group-hover:scale-100 transition-opacity duration-700 blur-3xl" />
 
             {/* Product image */}
             <div className="relative z-10 w-full transition-all duration-500 ease-out transform group-hover:rotate-1 group-hover:scale-[1.02]">
               <div
-                className="glow-bloom w-full aspect-[4/3] relative rounded-xl shadow-2xl overflow-hidden"
+                className="glow-bloom w-full aspect-4/3 relative rounded-xl shadow-2xl overflow-hidden "
                 style={{
                   maskImage: 'linear-gradient(black 80%, transparent 100%)',
                   WebkitMaskImage:
@@ -136,9 +138,9 @@ export default function Hero() {
                   src="/images/Apple-MacBook-Pro.jpg"
                   alt="MacBook Pro M3 Pro 16 Space Black — vista superior"
                   fill
-                  className="object-contain"
+                  className="object-contain md:min-w-xl "
                   priority
-                  sizes="(max-width: 1024px) 90vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
 
@@ -165,14 +167,12 @@ export default function Hero() {
       </main>
 
       {/* Bottom fade + scroll indicator */}
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-20" />
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em]">
-        <span className="text-cyber text-center animate-[bounce-slow_2s_ease-in-out_infinite]">
+      <div className="absolute bottom-0 w-full h-32 bg-linear-to-t from-void to-transparent pointer-events-none z-20" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em] animate-bounce-slow">
+        <span className="text-cyber text-center font-medium">
           LA BESTIA ESTÁ LISTA PARA SER TUYA
         </span>
-        <span className="text-sm text-cyber animate-[bounce-slow_2s_ease-in-out_infinite]">
-          ↓
-        </span>
+        <span className="text-sm text-cyber">↓</span>
       </div>
     </section>
   )
